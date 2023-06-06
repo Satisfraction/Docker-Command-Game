@@ -11,6 +11,8 @@ For each prompt, enter the correct command in the input field and click "Submit 
 If your answer is correct, the game will move on to the next prompt. 
 If your answer is incorrect, the game will ask you to try again.
 
+You can also use the "Get Hint" button to get a hint for the current command prompt. Click the "Get Hint" button and a hint will be displayed to help you find the correct command.
+
 The game has a timer that starts at 30 seconds. 
 If you take too long to input the correct command, the game will end.
 
@@ -35,6 +37,7 @@ The game uses the following variables:
 - `startTimer()`: A function to start the timer. Creates a timer element, updates it every second, and ends the game if time runs out.
 - `resetTimer()`: A function to reset the timer to 30 seconds.
 - `endGame()`: A function to end the game and reset game state variables.
+- `addHintButton()`: A function to add a hint button for the current command prompt. When clicked, it displays the hint for the command.
 
 ## License
 
