@@ -78,8 +78,108 @@ function showNextCommand() {
     gameBoard.appendChild(answerInput);
     gameBoard.appendChild(answerButton);
 
+    // call the addHintButton function
+    addHintButton();
+
     gameBoard.appendChild(commandElement);
 }
+
+// This function creates and returns an object that contains elements for a command prompt interface.
+// The function takes two parameters: `command` and `prompt`, both of which are strings.
+function createCommandPromptElements(command, prompt) {
+    // Create a new `div` element to hold the `command` text.
+    const commandElement = document.createElement('div');
+    // Set the `textContent` of the `commandElement` to `command`.
+    commandElement.textContent = command;
+    // Hide the `commandElement` by setting its `display` style to `none`.
+    commandElement.style.display = 'none';
+
+    // Create a new `p` element to hold the `prompt` text.
+    const promptElement = document.createElement('p');
+    // Set the `textContent` of the `promptElement` to `prompt`.
+    promptElement.textContent = prompt;
+
+    // Create a new `input` element for the user to input their answer.
+    const answerInput = document.createElement('input');
+    // Set the `type` of the `answerInput` to `text`.
+    answerInput.type = 'text';
+
+    // Create a new `button` element for the user to submit their answer.
+    const answerButton = document.createElement('button');
+    // Set the `textContent` of the `answerButton` to `'Submit Answer'`.
+    answerButton.textContent = 'Submit Answer';
+
+    // Return an object containing the created elements.
+    return {
+        commandElement,
+        promptElement,
+        answerInput,
+        answerButton
+    };
+}
+
+// This function takes in two parameters, a command and a prompt
+function displayCommandPrompt(command, prompt) {
+    // create four elements using the createCommandPromptElements function and store them in variables using destructuring
+    const {
+        commandElement,
+        promptElement,
+        answerInput,
+        answerButton
+    } = createCommandPromptElements(command, prompt);
+
+    // add an event listener to the answerButton that listens for a click
+    answerButton.addEventListener('click', () => {
+        // When the button is clicked, get the trimmed value of the answerInput and store it in the userAnswer variable
+        const userAnswer = answerInput.value.trim();
+        // set the correctAnswer variable to the command parameter passed into the function
+        const correctAnswer = command;
+
+        // call the checkAnswer function and pass in the userAnswer and correctAnswer variables as parameters
+        checkAnswer(userAnswer, correctAnswer);
+    });
+
+    // append the promptElement, answerInput, answerButton, and commandElement to the gameBoard element
+    gameBoard.appendChild(promptElement);
+    gameBoard.appendChild(answerInput);
+    gameBoard.appendChild(answerButton);
+    gameBoard.appendChild(commandElement);
+
+    // call the addHintButton function
+    addHintButton();
+}
+
+// This function takes in two parameters, a command and a prompt
+function displayCommandPrompt(command, prompt) {
+    // We create four elements using the createCommandPromptElements function and store them in variables using destructuring
+    const {
+        commandElement,
+        promptElement,
+        answerInput,
+        answerButton
+    } = createCommandPromptElements(command, prompt);
+
+    // We add an event listener to the answerButton that listens for a click
+    answerButton.addEventListener('click', () => {
+        // When the button is clicked, we get the trimmed value of the answerInput and store it in the userAnswer variable
+        const userAnswer = answerInput.value.trim();
+        // We set the correctAnswer variable to the command parameter passed into the function
+        const correctAnswer = command;
+
+        // We call the checkAnswer function and pass in the userAnswer and correctAnswer variables as parameters
+        checkAnswer(userAnswer, correctAnswer);
+    });
+
+    // We append the promptElement, answerInput, answerButton, and commandElement to the gameBoard element
+    gameBoard.appendChild(promptElement);
+    gameBoard.appendChild(answerInput);
+    gameBoard.appendChild(answerButton);
+    gameBoard.appendChild(commandElement);
+
+    // We call the addHintButton function
+    addHintButton();
+}
+
 
 // Function to show a message indicating if the user's answer was correct or incorrect
 function showResultMessage(result) {
@@ -129,3 +229,30 @@ function endGame() {
 
     currentCommandIndex = 0;
 }
+
+// This function creates and appends a button to the gameBoard element
+function addHintButton() {
+    const hintButton = document.createElement("button");
+    hintButton.textContent = "Get Hint"; // Sets the text content of the button to "Get Hint"
+
+    // Adds an event listener to the button that gets the hint for the current command when clicked
+    hintButton.addEventListener("click", () => {
+      const hint = commandsAndPrompts[currentCommandIndex].hint; // Gets the hint for the current command index
+
+      // If there is a hint available, creates and appends a p element with the hint to the gameBoard element
+      if (hint) {
+        const hintElement = document.createElement("p");
+        hintElement.textContent = hint;
+        hintElement.className = "hint";
+        gameBoard.appendChild(hintElement);
+
+        // Removes the hint element after 3 seconds
+        setTimeout(() => {
+          hintElement.remove();
+        }, 3000);
+      }
+    });
+
+    gameBoard.appendChild(hintButton); // Appends the hint button to the gameBoard element
+}
+  
