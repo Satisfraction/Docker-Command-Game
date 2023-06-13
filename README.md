@@ -26,18 +26,26 @@ The game uses the following variables:
 
 - `startButton`: The start button element from the DOM.
 - `gameBoard`: The game board element from the DOM.
+- `scoreElement`: The score element from the DOM.
 - `gameStarted`: A boolean indicating if the game has started.
 - `timer`: A reference to the timer interval.
+- `score`: The player's score.
+- `currentCommandIndex`: The index of the current command in the `commandsAndPrompts` array.
 
 ### Functions
 
 - `startGame()`: A function to start the game. Updates game state variables, shows the first command prompt, and starts the timer.
-- `showNextCommand()`: A function to show the next command prompt. Gets the next command and command prompt from the `commandsAndPrompts` array, creates elements to display the prompt and user input field, and adds event listener to the answer button.
+- `showNextCommand()`: A function to show the next command prompt. Gets the next command, command prompt, and hint from the       `commandsAndPrompts` array, creates elements to display the prompt and user input field, and adds event listener to the answer button.
 - `showResultMessage()`: A function to show a message indicating if the user's answer was correct or incorrect. Creates a message element, adds it to the game board, and removes it after 1.5 seconds.
 - `startTimer()`: A function to start the timer. Creates a timer element, updates it every second, and ends the game if time runs out.
 - `resetTimer()`: A function to reset the timer to 30 seconds.
 - `endGame()`: A function to end the game and reset game state variables.
 - `addHintButton()`: A function to add a hint button for the current command prompt. When clicked, it displays the hint for the command.
+- `createCommandPromptElements(command, prompt)`: A helper function to create and return an object containing elements for a command prompt interface.
+- `displayCommandPrompt(command, prompt)`: A function to display a command prompt. Creates elements for the prompt, user input field, and answer button, and adds event listener to the answer button.
+- `checkAnswer(userAnswer, correctAnswer)`: A function to check if the user's answer matches the correct answer.
+- `scoreAnswer()`: A function to score the player's answer. Increases the score by 1 and calls the `showScore()` function.
+- `showScore()`: A function to display the player's score.
 
 ## License
 
