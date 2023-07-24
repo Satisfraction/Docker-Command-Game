@@ -50,12 +50,12 @@ const commandsAndPrompts = [
     hint: 'Use "docker images" to list images'
   },
   {
-    command: 'docker-compose up',
+    command: 'docker compose-up',
     prompt: 'Create and start containers defined in a Docker Compose file',
     hint: 'Use "docker-compose up" to create and start containers defined in a Docker Compose file'
   },
   {
-    command: 'docker-compose down',
+    command: 'docker compose-down',
     prompt: 'Stop and remove containers created by Docker Compose',
     hint: 'Use "docker-compose down" to stop and remove containers created by Docker Compose'
   },

@@ -64,3 +64,10 @@ button:hover {
     background-color: #333;
     color: #fff;
 }
+
+#high-score {
+    float: right;
+    padding: 0.5em;
+    background-color: #333;
+    color: #fff;
+}
