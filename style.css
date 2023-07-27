@@ -1,73 +1,100 @@
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  color: blue;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 1em;
+  background-color: #0000ff;
+  color: #fff;
+  padding: 1em;
+  border-radius: 25px;
 }
 
 h1 {
-    margin: 0;
+  margin: 0;
 }
 
 p {
-    text-align: center;
-    font-size: 1.2em;
-    padding: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 1em;
 }
 
 main {
-    padding: 1em;
+  padding: 0.5em;
 }
 
 #game-board {
-    width: 400px;
-    height: 300px;
-    background-color: #eee;
-    margin-bottom: 1em;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  width: 45em;
+  height: 30em;
+  background-color: #eee;
+  margin-bottom: 1em;
+  padding: 2em;
+  border-radius: 25px;
 }
 
 button {
-    padding: 0.5em 1em;
-    margin: 5px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 0.5em 1em;
+  margin: 0em;
+  background-color: #0000ff;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #666;
+  background-color: #666;
 }
 
-.btn{
-    padding: 0.5em 1em;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.btn {
+  padding: 0.5em 1em;
+  background-color: #0000ff;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 1em;
+}
+
+.credits {
+  padding: 0.5em;
+  background-color: #0000ff;
+  color: #fff;
+  border-radius: 25px;
+}
+
+.credits a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.credits:hover {
+  background-color: #666;
 }
 
 #score {
-    position: absolute;
-    padding: 0.5em;
-    background-color: #333;
-    color: #fff;
+  position: absolute;
+  padding: 0.5em;
+  background-color: #0000ff;
+  color: #fff;
+  border-radius: 25px;
 }
 
 #high-score {
-    float: right;
-    padding: 0.5em;
-    background-color: #333;
-    color: #fff;
+  float: right;
+  padding: 0.5em;
+  background-color: #0000ff;
+  color: #fff;
+  border-radius: 25px;
 }

@@ -1,8 +1,8 @@
 // Get the start button and game board elements from the DOM
-const startButton = document.getElementById('start-button');
-const gameBoard = document.getElementById('game-board');
-const scoreElement = document.getElementById('score');
-const highScoreElement = document.getElementById('high-score');
+const startButton = document.getElementById("start-button");
+const gameBoard = document.getElementById("game-board");
+const scoreElement = document.getElementById("score");
+const highScoreElement = document.getElementById("high-score");
 
 // Initialize game state variables
 let gameStarted = false;
@@ -12,7 +12,7 @@ let currentCommandIndex = 0;
 let highScore = 0; // Add highScore variable
 
 // Add event listener to start button
-startButton.addEventListener('click', () => {
+startButton.addEventListener("click", () => {
   // If game has not started, start it
   if (!gameStarted) {
     startGame();
@@ -21,8 +21,8 @@ startButton.addEventListener('click', () => {
 
 // Function to display high score
 function showHighScore() {
-  const highScoreElement = document.getElementById('high-score');
-  const savedHighScore = localStorage.getItem('highScore');
+  const highScoreElement = document.getElementById("high-score");
+  const savedHighScore = localStorage.getItem("highScore");
   if (savedHighScore) {
     highScore = parseInt(savedHighScore); // Convert the saved high score to an integer
   }
@@ -50,21 +50,21 @@ function showNextCommand() {
   const hint = commandsAndPrompts[currentCommandIndex].hint;
 
   // Create elements to display the command prompt and user input field
-  const commandElement = document.createElement('div');
+  const commandElement = document.createElement("div");
   commandElement.textContent = nextCommand;
-  commandElement.style.display = 'none';
+  commandElement.style.display = "none";
 
-  const promptElement = document.createElement('p');
+  const promptElement = document.createElement("p");
   promptElement.textContent = commandPrompt;
 
-  const answerInput = document.createElement('input');
-  answerInput.type = 'text';
+  const answerInput = document.createElement("input");
+  answerInput.type = "text";
 
-  const answerButton = document.createElement('button');
-  answerButton.textContent = 'Submit Answer';
+  const answerButton = document.createElement("button");
+  answerButton.textContent = "Submit Answer";
 
   // Add event listener to answer button
-  answerButton.addEventListener('click', () => {
+  answerButton.addEventListener("click", () => {
     // Get user input and check if it matches the correct answer
     const userAnswer = answerInput.value.trim();
     const result = userAnswer === nextCommand;
@@ -74,7 +74,7 @@ function showNextCommand() {
       currentCommandIndex++;
 
       if (currentCommandIndex < commandsAndPrompts.length) {
-        gameBoard.innerHTML = '';
+        gameBoard.innerHTML = "";
         showNextCommand();
         resetTimer();
       } else {
@@ -86,7 +86,7 @@ function showNextCommand() {
       scoreAnswer();
     } else {
       // If the answer is incorrect, clear the input field
-      answerInput.value = '';
+      answerInput.value = "";
     }
 
     // Show message indicating if the answer was correct or incorrect
@@ -110,48 +110,44 @@ function showNextCommand() {
 // The function takes two parameters: `command` and `prompt`, both of which are strings.
 function createCommandPromptElements(command, prompt) {
   // Create a new `div` element to hold the `command` text.
-  const commandElement = document.createElement('div');
+  const commandElement = document.createElement("div");
   // Set the `textContent` of the `commandElement` to `command`.
   commandElement.textContent = command;
   // Hide the `commandElement` by setting its `display` style to `none`.
-  commandElement.style.display = 'none';
+  commandElement.style.display = "none";
 
   // Create a new `p` element to hold the `prompt` text.
-  const promptElement = document.createElement('p');
+  const promptElement = document.createElement("p");
   // Set the `textContent` of the `promptElement` to `prompt`.
   promptElement.textContent = prompt;
 
   // Create a new `input` element for the user to input their answer.
-  const answerInput = document.createElement('input');
+  const answerInput = document.createElement("input");
   // Set the `type` of the `answerInput` to `text`.
-  answerInput.type = 'text';
+  answerInput.type = "text";
 
   // Create a new `button` element for the user to submit their answer.
-  const answerButton = document.createElement('button');
+  const answerButton = document.createElement("button");
   // Set the `textContent` of the `answerButton` to `'Submit Answer'`.
-  answerButton.textContent = 'Submit Answer';
+  answerButton.textContent = "Submit Answer";
 
   // Return an object containing the created elements.
   return {
     commandElement,
     promptElement,
     answerInput,
-    answerButton
+    answerButton,
   };
 }
 
 // This function takes in two parameters, a command and a prompt
 function displayCommandPrompt(command, prompt) {
   // create four elements using the createCommandPromptElements function and store them in variables using destructuring
-  const {
-    commandElement,
-    promptElement,
-    answerInput,
-    answerButton
-  } = createCommandPromptElements(command, prompt);
+  const { commandElement, promptElement, answerInput, answerButton } =
+    createCommandPromptElements(command, prompt);
 
   // add an event listener to the answerButton that listens for a click
-  answerButton.addEventListener('click', () => {
+  answerButton.addEventListener("click", () => {
     // When the button is clicked, get the trimmed value of the answerInput and store it in the userAnswer variable
     const userAnswer = answerInput.value.trim();
     // set the correctAnswer variable to the command parameter passed into the function
@@ -173,9 +169,11 @@ function displayCommandPrompt(command, prompt) {
 
 // Function to show a message indicating if the user's answer was correct or incorrect
 function showResultMessage(result) {
-  const resultElement = document.createElement('p');
-  resultElement.textContent = result ? 'Correct!' : 'Incorrect. Please try again.';
-  resultElement.className = result ? 'correct' : 'incorrect';
+  const resultElement = document.createElement("p");
+  resultElement.textContent = result
+    ? "Correct!"
+    : "Incorrect. Please try again.";
+  resultElement.className = result ? "correct" : "incorrect";
   gameBoard.appendChild(resultElement);
   // Remove the message after 1.5 seconds
   setTimeout(() => {
@@ -187,7 +185,7 @@ function showResultMessage(result) {
 function startTimer() {
   let timeLeft = 30;
 
-  const timerElement = document.createElement('p');
+  const timerElement = document.createElement("p");
   timerElement.textContent = `Time left: ${timeLeft}s`;
   gameBoard.appendChild(timerElement);
 
@@ -215,12 +213,12 @@ function endGame() {
   clearInterval(timer);
   gameStarted = false;
   startButton.disabled = false;
-  gameBoard.innerHTML = '';
+  gameBoard.innerHTML = "";
 
   // Check if current score is higher than previous high score
   if (score > highScore) {
     highScore = score;
-    localStorage.setItem('highScore', highScore); // Save the new high score in local storage
+    localStorage.setItem("highScore", highScore); // Save the new high score in local storage
   }
 
   score = 0; // Reset score to 0
@@ -264,7 +262,7 @@ function scoreAnswer() {
 // Declare a function called showScore
 function showScore() {
   // Get the DOM element with the ID "score"
-  const scoreElement = document.getElementById('score');
+  const scoreElement = document.getElementById("score");
   // Set the text content of the scoreElement to include the word "Score:" and the value of the score variable
   scoreElement.textContent = `Score: ${score}`;
 }
