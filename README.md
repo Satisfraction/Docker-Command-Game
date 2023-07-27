@@ -2,6 +2,10 @@
 
 This is a game made by **Satisfraction** where the player is given a series of command prompts and must enter the correct command. The game has a 30-second timer for each prompt. If the player enters the correct command before time runs out, they move on to the next prompt. If they enter an incorrect command, they can try again until time runs out.
 
+## Preview
+
+![Preview](preview.png)
+
 ## How to Play
 
 To start the game, click the "Start" button. The game will present you with a series of command prompts for Docker. For each prompt, enter the correct command in the input field and click "Submit Answer". If your answer is correct, the game will move on to the next prompt. If your answer is incorrect, the game will ask you to try again.
