@@ -3,6 +3,13 @@ const startButton = document.getElementById("start-button");
 const gameBoard = document.getElementById("game-board");
 const scoreElement = document.getElementById("score");
 const highScoreElement = document.getElementById("high-score");
+const timerElement = document.getElementById("timer");
+const learnModeButton = document.getElementById("learn-mode-button");
+const exitLearnModeButton = document.getElementById("exit-learn-mode-button");
+const applySettingsButton = document.getElementById("apply-settings-button");
+const durationInput = document.getElementById("duration-input");
+const maxWrongInput = document.getElementById("max-wrong-input");
+const wrongAnswerCountElement = document.getElementById("wrong-answer-count"); // Add wrong answer count element
 
 // Initialize game state variables
 let gameStarted = false;
@@ -10,6 +17,9 @@ let timer;
 let score = 0;
 let currentCommandIndex = 0;
 let highScore = 0; // Add highScore variable
+let timerDuration = 30; // Default timer duration
+let maxWrongAnswers = 3; // Default maximum wrong answers allowed
+let wrongAnswerCount = 0; // Initialize wrong answer count
 
 // Add event listener to start button
 startButton.addEventListener("click", () => {
@@ -21,7 +31,6 @@ startButton.addEventListener("click", () => {
 
 // Function to display high score
 function showHighScore() {
-  const highScoreElement = document.getElementById("high-score");
   const savedHighScore = localStorage.getItem("highScore");
   if (savedHighScore) {
     highScore = parseInt(savedHighScore); // Convert the saved high score to an integer
@@ -85,8 +94,16 @@ function showNextCommand() {
       // Update score
       scoreAnswer();
     } else {
-      // If the answer is incorrect, clear the input field
-      answerInput.value = "";
+      // If the answer is incorrect, increment the wrong answer count
+      wrongAnswerCount++;
+
+      // Check if the maximum wrong answers have been reached
+      if (wrongAnswerCount >= maxWrongAnswers) {
+        endGame();
+      } else {
+        // Clear the input field
+        answerInput.value = "";
+      }
     }
 
     // Show message indicating if the answer was correct or incorrect
@@ -183,11 +200,9 @@ function showResultMessage(result) {
 
 // Function to start the timer
 function startTimer() {
-  let timeLeft = 30;
+  let timeLeft = timerDuration;
 
-  const timerElement = document.createElement("p");
   timerElement.textContent = `Time left: ${timeLeft}s`;
-  gameBoard.appendChild(timerElement);
 
   timer = setInterval(() => {
     timeLeft--;
@@ -266,3 +281,64 @@ function showScore() {
   // Set the text content of the scoreElement to include the word "Score:" and the value of the score variable
   scoreElement.textContent = `Score: ${score}`;
 }
+
+// Function to show the wrong answer count
+function showWrongAnswerCount() {
+  wrongAnswerCountElement.textContent = `Wrong Answers: ${wrongAnswerCount}`;
+}
+
+// Function to set game settings
+function setGameSettings(duration, maxWrong) {
+  timerDuration = duration;
+  maxWrongAnswers = maxWrong;
+}
+
+// Function to enable learning mode
+function enableLearningMode() {
+  currentCommandIndex = 0;
+  gameBoard.innerHTML = "";
+  gameStarted = true;
+  showNextCommand();
+  startTimer();
+  showHighScore();
+  scoreElement.style.display = "none";
+  timerElement.style.display = "none";
+}
+
+// Function to reset to default settings and exit learning mode
+function resetSettingsAndExitLearningMode() {
+  currentCommandIndex = 0;
+  gameBoard.innerHTML = "";
+  gameStarted = false;
+  startButton.disabled = false;
+  timerElement.textContent = "";
+  scoreElement.style.display = "block";
+  timerElement.style.display = "block";
+  score = 0;
+}
+
+// Add event listener to "Learn Mode" button
+learnModeButton.addEventListener("click", () => {
+  enableLearningMode();
+});
+
+// Add event listener to "Exit Learning Mode" button
+exitLearnModeButton.addEventListener("click", () => {
+  resetSettingsAndExitLearningMode();
+});
+
+// Add event listener to "Apply Settings" button
+applySettingsButton.addEventListener("click", () => {
+  const newDuration = parseInt(durationInput.value);
+  const newMaxWrong = parseInt(maxWrongInput.value);
+
+  if (!isNaN(newDuration) && !isNaN(newMaxWrong)) {
+    setGameSettings(newDuration, newMaxWrong);
+    alert("Settings applied successfully!");
+  } else {
+    alert("Invalid input. Please enter numbers for duration and max wrong answers.");
+  }
+});
+
+// Initialize high score display
+showHighScore();
