@@ -265,4 +265,79 @@ const commandsAndPrompts = [
     prompt: "Remove a Docker service",
     hint: 'Use "docker service rm <service-name>" to remove a Docker service',
   },
+  {
+    command: "docker node ls",
+    prompt: "List Docker swarm nodes",
+    hint: 'Use "docker node ls" to list nodes in a Docker swarm',
+  },
+  {
+    command: "docker node inspect",
+    prompt: "Display detailed information about a Docker swarm node",
+    hint: 'Use "docker node inspect <node-id>" to display detailed information about a Docker swarm node',
+  },
+  {
+    command: "docker node update",
+    prompt: "Update a Docker swarm node",
+    hint: 'Use "docker node update --availability <availability> <node-id>" to update the availability of a Docker swarm node',
+  },
+  {
+    command: "docker node ps",
+    prompt: "List tasks running on Docker swarm nodes",
+    hint: 'Use "docker node ps <node-id>" to list tasks running on a specific Docker swarm node',
+  },
+  {
+    command: "docker stack ls",
+    prompt: "List Docker stacks",
+    hint: 'Use "docker stack ls" to list Docker stacks in a swarm',
+  },
+  {
+    command: "docker stack deploy",
+    prompt: "Deploy a stack to a Docker swarm",
+    hint: 'Use "docker stack deploy -c <compose-file> <stack-name>" to deploy a stack to a Docker swarm',
+  },
+  {
+    command: "docker stack ps",
+    prompt: "List tasks of a Docker stack",
+    hint: 'Use "docker stack ps <stack-name>" to list tasks of a Docker stack',
+  },
+  {
+    command: "docker stack services",
+    prompt: "List services in a Docker stack",
+    hint: 'Use "docker stack services <stack-name>" to list services in a Docker stack',
+  },
+  {
+    command: "docker stack rm",
+    prompt: "Remove a Docker stack",
+    hint: 'Use "docker stack rm <stack-name>" to remove a Docker stack',
+  },
+  {
+    command: "docker plugin ls",
+    prompt: "List Docker plugins",
+    hint: 'Use "docker plugin ls" to list Docker plugins',
+  },
+  {
+    command: "docker plugin install",
+    prompt: "Install a Docker plugin",
+    hint: 'Use "docker plugin install <plugin-name>" to install a Docker plugin',
+  },
+  {
+    command: "docker plugin inspect",
+    prompt: "Display detailed information about a Docker plugin",
+    hint: 'Use "docker plugin inspect <plugin-name>" to display detailed information about a Docker plugin',
+  },
+  {
+    command: "docker plugin disable",
+    prompt: "Disable a Docker plugin",
+    hint: 'Use "docker plugin disable <plugin-name>" to disable a Docker plugin',
+  },
+  {
+    command: "docker plugin enable",
+    prompt: "Enable a Docker plugin",
+    hint: 'Use "docker plugin enable <plugin-name>" to enable a Docker plugin',
+  },
+  {
+    command: "docker plugin upgrade",
+    prompt: "Upgrade a Docker plugin",
+    hint: 'Use "docker plugin upgrade <plugin-name>" to upgrade a Docker plugin',
+  },
 ];
