@@ -2,6 +2,15 @@
 
 This is a game made by **Satisfraction** where the player is given a series of command prompts and must enter the correct command. The game has a 30-second timer for each prompt. If the player enters the correct command before time runs out, they move on to the next prompt. If they enter an incorrect command, they can try again until time runs out.
 
+## Table of Contents
+
+- [Preview](#preview)
+- [How to Play](#how-to-play)
+- [Code Explanation](#code-explanation)
+  - [Variables](#variables)
+  - [Functions](#functions)
+- [License](#license)
+
 ## Preview
 
 ![Preview](preview.png)
